@@ -1,0 +1,9 @@
+.footer {
+  position: relative; /* или static, если это необходимо */
+  width: 100%;
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  bottom: 0;
+}

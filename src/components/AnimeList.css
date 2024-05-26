@@ -1,0 +1,49 @@
+.anime-grid {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+}
+
+.anime-grid li {
+  width: 20%;
+  box-sizing: border-box;
+  padding: 10px;
+  text-align: center;
+}
+
+.anime-grid img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.anime-grid a {
+  text-decoration: none;
+  color: black;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.pagination li {
+  list-style-type: none;
+  margin: 0 5px;
+}
+
+.pagination a {
+  padding: 10px 20px;
+  background-color: #61dafb;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.pagination .active a {
+  background-color: #21a1f1;
+}

@@ -1,0 +1,79 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.auth-button {
+  padding: 10px 20px;
+  background-color: #61dafb;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-container input {
+  width: 400px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.search-container button {
+  padding: 10px 20px;
+  background-color: #61dafb;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.anime-list ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+}
+
+.anime-list li {
+  width: 20%;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.anime-list a {
+  text-decoration: none;
+  color: black;
+}
+
+.load-more {
+  padding: 10px 20px;
+  background-color: #61dafb;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  display: block;
+  margin: 20px auto;
+}
