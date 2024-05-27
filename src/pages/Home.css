@@ -1,0 +1,17 @@
+.anime-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.anime-item {
+  width: 18%;
+  margin: 10px;
+  text-align: center;
+}
+
+.anime-item img {
+  width: 150px; /* Фиксированная ширина */
+  height: 225px; /* Фиксированная высота */
+  object-fit: cover; /* Сохранение пропорций */
+}

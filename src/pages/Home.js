@@ -1,25 +1,14 @@
 import React, { useState } from "react";
 import AnimeList from "../components/AnimeList";
 import Search from "../components/Search";
-import Header from "../components/Header";
 import Footer from "../components/Footer";
-import Login from "../components/Login";
+import Wishlist from "../components/Wishlist";
+import "./Home.css";
 
-const Home = () => {
-  const [showLogin, setShowLogin] = useState(false);
-
-  const handleLoginClick = () => {
-    setShowLogin(true);
-  };
-
-  const handleCloseLogin = () => {
-    setShowLogin(false);
-  };
-
+const Home = ({ onClose }) => {
+  // Нет необходимости в showLogin и setShowLogin здесь, они управляются в App.js через prop
   return (
     <div>
-      <Header onLoginClick={handleLoginClick} />
-      {showLogin && <Login onClose={handleCloseLogin} />}
       <Search />
       <AnimeList />
       <Footer />

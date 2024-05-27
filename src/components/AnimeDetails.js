@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import "./AnimeDetails.css";
 
 const GET_ANIME_DETAILS = gql`
-  query ($id: Int) {
+  query ($id: Int!) {
     Media(id: $id) {
       id
       title {
@@ -24,7 +24,7 @@ const GET_ANIME_DETAILS = gql`
   }
 `;
 
-const AnimeDetails = () => {
+const AnimeDetails = ({ addToWishlist }) => {
   const { id } = useParams();
   const { loading, error, data } = useQuery(GET_ANIME_DETAILS, {
     variables: { id: parseInt(id) },
@@ -34,6 +34,14 @@ const AnimeDetails = () => {
   if (error) return <p>Error :(</p>;
 
   const { title, description, trailer, coverImage } = data.Media;
+
+  const handleAddToWishlist = () => {
+    addToWishlist({
+      id: data.Media.id,
+      title: data.Media.title,
+      coverImage: data.Media.coverImage,
+    });
+  };
 
   return (
     <div className="container">
@@ -54,6 +62,7 @@ const AnimeDetails = () => {
           />
         </div>
       )}
+      <button onClick={handleAddToWishlist}>Add to Wishlist</button>
     </div>
   );
 };

@@ -1,22 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useLazyQuery, gql } from "@apollo/client";
 import { Link } from "react-router-dom";
-import ReactPaginate from "react-paginate";
 import "./Search.css";
 
 const SEARCH_ANIME = gql`
   query ($search: String, $page: Int) {
     Page(page: $page, perPage: 80) {
-      pageInfo {
-        total
-        currentPage
-        lastPage
-        hasNextPage
-      }
       media(search: $search, type: ANIME) {
         id
         title {
           romaji
+        }
+        coverImage {
+          medium
         }
       }
     }
@@ -47,36 +43,31 @@ const Search = () => {
     searchAnime({ variables: { search: searchTerm, page: 1 } });
   };
 
-  const handlePageClick = (data) => {
-    setPage(data.selected + 1);
-  };
-
   return (
-    <div>
-      <input
-        type="text"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-      <button onClick={handleSearch}>Search</button>
-      {loading && <p>Loading...</p>}
-      <ul className="anime-grid">
+    <div className="search-container">
+      <div className="search-input-wrapper">
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Поиск аниме..."
+          className="search-input"
+        />
+        <button onClick={handleSearch} className="search-button">
+          Search
+        </button>
+      </div>
+      {loading && <p>Загрузка...</p>}
+      <ul className="anime-list">
         {animeList.map((anime) => (
           <li key={anime.id}>
-            <Link to={`/anime/${anime.id}`}>{anime.title.romaji}</Link>
+            <Link to={`/anime/${anime.id}`} className="anime-link">
+              <img src={anime.coverImage.medium} alt={anime.title.romaji} />
+              <span>{anime.title.romaji}</span>
+            </Link>
           </li>
         ))}
       </ul>
-      {data && (
-        <ReactPaginate
-          pageCount={data.Page.pageInfo.lastPage}
-          pageRangeDisplayed={2}
-          marginPagesDisplayed={2}
-          onPageChange={handlePageClick}
-          containerClassName="pagination"
-          activeClassName="active"
-        />
-      )}
     </div>
   );
 };
